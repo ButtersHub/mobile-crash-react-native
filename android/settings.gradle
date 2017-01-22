@@ -1,0 +1,3 @@
+rootProject.name = 'CrachApp2'
+
+include ':app'
