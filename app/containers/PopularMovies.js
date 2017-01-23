@@ -15,7 +15,7 @@ import {
 } from 'react-native'
 
 
-class Home extends Component {
+class PopularMovies extends Component {
 
     constructor(props) {
         super(props);
@@ -34,10 +34,10 @@ class Home extends Component {
             <View>
                 <View>
                     <TouchableHighlight style={styles.button} onPress={ () => this.discoverPresses()}>
-                        <Text> Discover movies </Text>
+                        <Text> Discover Popular Movies </Text>
                     </TouchableHighlight>
                 </View>
-                <ScrollView >
+                <ScrollView style={styles.scrollSection} >
                     {this.movies().map((movie) => {
                         console.log('0');
                         return <View key={movie.id}>
@@ -52,17 +52,24 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
+
+    scrollSection: {
+
+    },
+
     resultTitle:{
         fontSize: 16,
         color: '#000',
         paddingLeft: 10,
     },
     resultImage: {
-        height: 197,
-        width: 350,
+        height: 150,
+        width: 400,
+        alignSelf: 'stretch',
     },
     button:{
-        paddingTop: 20,
+        paddingTop: 5,
+        backgroundColor: '#fff936'
     }
 });
 
@@ -72,4 +79,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(PopularMovies);
