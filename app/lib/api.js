@@ -13,7 +13,7 @@ class Api {
     static get(route) {
         return this.xhr(route, null, 'GET');
     }
-    
+
     static xhr(route, params, verb) {
         const host = 'https://api.themoviedb.org/3/discover/movie'
         const url = `${host}${route}`

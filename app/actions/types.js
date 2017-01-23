@@ -3,6 +3,7 @@
  */
 export const TEST_MOVIE = 'TEST_MOVIE'
 export const SET_DISCOVERED_MOVIES = 'SET_DISCOVERED_MOVIES'
+export const SET_FOUND_MOVIES = 'SET_FOUND_MOVIES'
 
 
 

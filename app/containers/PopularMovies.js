@@ -10,6 +10,7 @@ import {
     View,
     Text,
     Image,
+    TextInput,
     StyleSheet,
     TouchableHighlight
 } from 'react-native'
@@ -19,6 +20,11 @@ class PopularMovies extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {movieNameInput: ''}
+    }
+
+    searchPressed() {
+        this.props.searchMovies(this.state.movieNameInput)
     }
 
     discoverPresses() {
@@ -32,8 +38,20 @@ class PopularMovies extends Component {
     render() {
         return (
             <View>
+                <View >
+                    <TextInput
+                               returnKeyType="search"
+                               placeholder="Enter movie name"
+                               onChangeText={(movieNameInput) => this.setState({movieNameInput})}
+                               value={this.state.movieNameInput}
+                    />
+                    <TouchableHighlight style={styles.searchButton} onPress={ () => this.searchPressed()}>
+                        <Text> Find movies </Text>
+                    </TouchableHighlight>
+                </View>
+
                 <View>
-                    <TouchableHighlight style={styles.button} onPress={ () => this.discoverPresses()}>
+                    <TouchableHighlight style={styles.discoverButton} onPress={ () => this.discoverPresses()}>
                         <Text> Discover Popular Movies </Text>
                     </TouchableHighlight>
                 </View>
@@ -67,15 +85,20 @@ const styles = StyleSheet.create({
         width: 400,
         alignSelf: 'stretch',
     },
-    button:{
+    discoverButton:{
         paddingTop: 5,
         backgroundColor: '#fff936'
+    },
+    searchButton:{
+        paddingTop: 1,
+        backgroundColor: '#ff5c1b'
     }
 });
 
 function mapStateToProps(state) {
     return {
-        discoveredMovies: state.discoveredMovies
+        discoveredMovies: state.discoveredMovies,
+        foundMovies: state.foundMovies
     }
 }
 
